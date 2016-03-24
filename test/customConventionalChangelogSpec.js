@@ -97,6 +97,14 @@ describe('custom conventional changelog', () => {
         }).catch(done.fail);
     });
 
+    it('normalizes a wildcard scope', (done) => {
+      transformCommitWithConfig('bar(*): lorem', { types: [{ key: 'bar' }] })
+        .then((transformedCommit) => {
+          expect(transformedCommit.scope).toBe('');
+          done();
+        }).catch(done.fail);
+    });
+
     describe('notes', () => {
       it('does not discard commits containing important notes', (done) => {
         const commit = 'foo(b): hello\nIMPORTANT: be cool!\nSome Note: foo';
