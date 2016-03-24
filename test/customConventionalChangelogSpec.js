@@ -28,6 +28,15 @@ describe('custom conventional changelog', () => {
     resolveConfigPromise();
   });
 
+  function transformCommitWithConfig(commit, config) {
+    const parsedCommit = conventionalChangelogParser(commit, {});
+
+    resolveConfigPromise(config);
+
+    return customConventionalChangelog
+      .then((options) => options.writerOpts.transform(parsedCommit));
+  }
+
   describe('writerOptions', () => {
     it('maps short notation of type to longer title', (done) => {
       const someCommit = conventionalChangelogParser('foo(asd): hello', {});
@@ -48,6 +57,20 @@ describe('custom conventional changelog', () => {
       }).catch(done.fail);
 
       resolveConfigPromise(customConfig);
+    });
+
+    it('discards commits that are not meant to be shown in changelog', (done) => {
+      transformCommitWithConfig('bar(fgh): lorem', {
+        types: [
+          {
+            key: 'bar',
+            hide: true,
+          },
+        ],
+      }).then((transformedCommit) => {
+        expect(transformedCommit).toBeUndefined();
+        done();
+      }).catch(done.fail);
     });
   });
 });
