@@ -9,7 +9,19 @@
   "author": "Jimdo GmbH",
   "license": "MIT",
   "devDependencies": {
+    "conventional-commits-parser": "^1.0.1",
     "eslint": "^2.4.0",
-    "eslint-config-airbnb": "^6.2.0"
+    "eslint-config-airbnb": "^6.2.0",
+    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp-toolbox-pipe-coverage-istanbul": "^0.2.1",
+    "gulp-toolbox-registry": "^0.3.1",
+    "gulp-toolbox-test-node-jasmine": "^0.2.0",
+    "proxyquire": "^1.7.4",
+    "through2": "^2.0.1",
+    "uberconfig": "^0.1.0",
+    "undertaker-task-provider-registry": "^1.2.1"
+  },
+  "dependencies": {
+    "findup": "^0.1.5"
   }
 }
