@@ -114,6 +114,32 @@ describe('custom conventional changelog', () => {
         }).catch(done.fail);
     });
 
+    it('shortens the subject', (done) => {
+      const longSubject = 'foofoofoofoofoofoofoofoofoofoofoofoofoo' +
+        'foofoofoofoofoofoofoofoofoofoofoofoofoofoofoofoofoo';
+      const someCommit = `bar(yep): ${longSubject}`;
+
+      transformCommitWithConfig(someCommit, { types: [{ key: 'bar' }] })
+        .then((transformedCommit) => {
+          expect(transformedCommit.subject.length).toBe(80);
+          done();
+        }).catch(done.fail);
+    });
+
+    it('shortens the subject according to config', (done) => {
+      const longSubject = 'foofoofoofoofoofoofoofoofoofoofoofoofoo' +
+        'foofoofoofoofoofoofoofoofoofoofoofoofoofoofoofoofoo';
+      const someCommit = `bar(yep): ${longSubject}`;
+
+      transformCommitWithConfig(someCommit, {
+        types: [{ key: 'bar' }],
+        maxSubjectLength: 42,
+      }).then((transformedCommit) => {
+        expect(transformedCommit.subject.length).toBe(42);
+        done();
+      }).catch(done.fail);
+    });
+
     describe('notes', () => {
       it('does not discard commits containing important notes', (done) => {
         const commit = 'foo(b): hello\nIMPORTANT: be cool!\nSome Note: foo';
