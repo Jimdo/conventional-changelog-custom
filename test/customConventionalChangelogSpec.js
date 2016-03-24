@@ -81,5 +81,19 @@ describe('custom conventional changelog', () => {
         done();
       }).catch(done.fail);
     });
+
+    describe('notes', () => {
+      it('does not discard commits containing important notes', (done) => {
+        const commit = 'foo(b): hello\nIMPORTANT: be cool!';
+
+        transformCommitWithConfig(commit, {
+          types: [{ key: 'a' }],
+          notes: [{ keyword: 'IMPORTANT', important: true }],
+        }).then((transformedCommit) => {
+          expect(transformedCommit).toBeDefined();
+          done();
+        }).catch(done.fail);
+      });
+    });
   });
 });
