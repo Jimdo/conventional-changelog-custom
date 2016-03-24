@@ -39,24 +39,17 @@ describe('custom conventional changelog', () => {
 
   describe('writerOptions', () => {
     it('maps short notation of type to longer title', (done) => {
-      const someCommit = conventionalChangelogParser('foo(asd): hello', {});
-      const customConfig = {
+      transformCommitWithConfig('foo(asd): hello', {
         types: [
           {
             key: 'foo',
             name: 'Foo Fuchs',
           },
         ],
-      };
-
-      customConventionalChangelog.then((options) => {
-        const transformedCommit = options.writerOpts.transform(someCommit);
-
+      }).then((transformedCommit) => {
         expect(transformedCommit.type).toBe('Foo Fuchs');
         done();
       }).catch(done.fail);
-
-      resolveConfigPromise(customConfig);
     });
 
     it('discards unknown commit types', (done) => {
