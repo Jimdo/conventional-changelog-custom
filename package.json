@@ -1,0 +1,15 @@
+{
+  "name": "conventional-changelog-custom",
+  "version": "0.0.0",
+  "description": "customizable conventional changelog preset",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jimdo GmbH",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^2.4.0",
+    "eslint-config-airbnb": "^6.2.0"
+  }
+}
