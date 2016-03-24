@@ -1,0 +1,52 @@
+{
+  "maxSubjectLength": 80,
+  "types": [
+    {
+      "key": "feat",
+      "name": "Features"
+    },
+    {
+      "key": "fix",
+      "name": "Bug Fixes"
+    },
+    {
+      "key": "perf",
+      "name": "Performance Improvements"
+    },
+    {
+      "key": "revert",
+      "name": "Reverts"
+    },
+    {
+      "key": "docs",
+      "name": "Documentation",
+      "hide": true
+    },
+    {
+      "key": "style",
+      "name": "Styles",
+      "hide": true
+    },
+    {
+      "key": "refactor",
+      "name": "Code Refactoring",
+      "hide": true
+    },
+    {
+      "key": "test",
+      "name": "Tests",
+      "hide": true
+    },
+    {
+      "key": "chore",
+      "name": "Chores",
+      "hide": true
+    }
+  ],
+  "notes": [
+    {
+      "keyword": "BREAKING CHANGE",
+      "important": true
+    }
+  ]
+}

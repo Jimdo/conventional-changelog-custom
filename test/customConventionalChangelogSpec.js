@@ -7,8 +7,10 @@ describe('custom conventional changelog', () => {
   let customConventionalChangelog = null;
   let getConfigFromRcFileFake = null;
   let resolveConfigPromise = null;
+  let defaultConfigFake = null;
 
   beforeEach(() => {
+    defaultConfigFake = { notes: [], types: [] };
     getConfigFromRcFileFake = jasmine.createSpy('getConfigFromRcFile');
     getConfigFromRcFileFake.and.returnValue(new Promise((resolve) => {
       resolveConfigPromise = resolve;
@@ -16,6 +18,7 @@ describe('custom conventional changelog', () => {
 
     customConventionalChangelog = proxyquire('../lib/index', {
       './getConfigFromRcFile': getConfigFromRcFileFake,
+      './defaultConfig': defaultConfigFake,
     });
   });
 
@@ -80,6 +83,18 @@ describe('custom conventional changelog', () => {
         expect(transformedCommit).toBeUndefined();
         done();
       }).catch(done.fail);
+    });
+
+    it('falls back to defaultConfig', (done) => {
+      defaultConfigFake.types.push({
+        key: 'hase',
+        name: 'Fuchs',
+      });
+      transformCommitWithConfig('hase(igel): lorem', {})
+        .then((transformedCommit) => {
+          expect(transformedCommit.type).toBe('Fuchs');
+          done();
+        }).catch(done.fail);
     });
 
     describe('notes', () => {
