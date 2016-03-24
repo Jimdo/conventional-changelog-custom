@@ -25,7 +25,7 @@ describe('custom conventional changelog', () => {
       done();
     }).catch(done.fail);
 
-    resolveConfigPromise();
+    resolveConfigPromise({});
   });
 
   function transformCommitWithConfig(commit, config) {
