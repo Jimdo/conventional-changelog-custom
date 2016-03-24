@@ -59,6 +59,14 @@ describe('custom conventional changelog', () => {
       resolveConfigPromise(customConfig);
     });
 
+    it('discards unknown commit types', (done) => {
+      transformCommitWithConfig('a(c): c', { types: [{ key: 'b' }] })
+        .then((transformedCommit) => {
+          expect(transformedCommit).toBeUndefined();
+          done();
+        }).catch(done.fail);
+    });
+
     it('discards commits that are not meant to be shown in changelog', (done) => {
       transformCommitWithConfig('bar(fgh): lorem', {
         types: [
