@@ -3,41 +3,26 @@
 const proxyquire = require('proxyquire');
 const conventionalChangelogParser = require('conventional-commits-parser').sync;
 
-describe('custom conventional changelog', () => {
-  let customConventionalChangelog = null;
-  let getConfigFromRcFileFake = null;
-  let resolveConfigPromise = null;
+describe('getTransformFn', () => {
+  let getTransformFn = null;
   let defaultConfigFake = null;
 
   beforeEach(() => {
     defaultConfigFake = { notes: [], types: [] };
-    getConfigFromRcFileFake = jasmine.createSpy('getConfigFromRcFile');
-    getConfigFromRcFileFake.and.returnValue(new Promise((resolve) => {
-      resolveConfigPromise = resolve;
-    }));
 
-    customConventionalChangelog = proxyquire('../lib/index', {
-      './getConfigFromRcFile': getConfigFromRcFileFake,
+    getTransformFn = proxyquire('../lib/getTransformFn', {
       './defaultConfig': defaultConfigFake,
     });
   });
 
-  it('returns a promise resolving to an option object', (done) => {
-    customConventionalChangelog.then((options) => {
-      expect(typeof options).toBe('object');
-      done();
-    }).catch(done.fail);
-
-    resolveConfigPromise({});
+  it('returns a transform function', () => {
+    expect(typeof getTransformFn()).toBe('function');
   });
 
   function transformCommitWithConfig(commit, config, parserConfig) {
     const parsedCommit = conventionalChangelogParser(commit, parserConfig || {});
 
-    resolveConfigPromise(config);
-
-    return customConventionalChangelog
-      .then((options) => options.writerOpts.transform(parsedCommit));
+    return Promise.resolve(getTransformFn(config)(parsedCommit));
   }
 
   describe('writerOptions', () => {
