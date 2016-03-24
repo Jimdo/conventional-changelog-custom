@@ -28,8 +28,8 @@ describe('custom conventional changelog', () => {
     resolveConfigPromise({});
   });
 
-  function transformCommitWithConfig(commit, config) {
-    const parsedCommit = conventionalChangelogParser(commit, {});
+  function transformCommitWithConfig(commit, config, parserConfig) {
+    const parsedCommit = conventionalChangelogParser(commit, parserConfig || {});
 
     resolveConfigPromise(config);
 
@@ -84,12 +84,15 @@ describe('custom conventional changelog', () => {
 
     describe('notes', () => {
       it('does not discard commits containing important notes', (done) => {
-        const commit = 'foo(b): hello\nIMPORTANT: be cool!';
+        const commit = 'foo(b): hello\nIMPORTANT: be cool!\nSome Note: foo';
 
         transformCommitWithConfig(commit, {
           types: [{ key: 'a' }],
-          notes: [{ keyword: 'IMPORTANT', important: true }],
-        }).then((transformedCommit) => {
+          notes: [
+            { keyword: 'Some Note' },
+            { keyword: 'IMPORTANT', important: true },
+          ],
+        }, { noteKeywords: ['IMPORTANT', 'Some Note'] }).then((transformedCommit) => {
           expect(transformedCommit).toBeDefined();
           done();
         }).catch(done.fail);
