@@ -8,7 +8,7 @@ describe('getTransformFn', () => {
   let defaultConfigFake = null;
 
   beforeEach(() => {
-    defaultConfigFake = { notes: [], types: [] };
+    defaultConfigFake = { notes: [], types: [], '@noCallThru': true };
 
     getTransformFn = proxyquire('../lib/getTransformFn', {
       './defaultConfig': defaultConfigFake,
@@ -107,6 +107,7 @@ describe('getTransformFn', () => {
     });
 
     it('shortens the subject', () => {
+      defaultConfigFake.maxSubjectLength = 70;
       const longSubject = 'foofoofoofoofoofoofoofoofoofoofoofoofoo' +
         'foofoofoofoofoofoofoofoofoofoofoofoofoofoofoofoofoo';
       const someCommit = `bar(yep): ${longSubject}`;
@@ -116,7 +117,7 @@ describe('getTransformFn', () => {
         { types: [{ key: 'bar' }] }
       );
 
-      expect(transformedCommit.subject.length).toBe(80);
+      expect(transformedCommit.subject.length).toBe(70);
     });
 
     it('shortens the subject according to config', () => {
