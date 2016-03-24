@@ -105,6 +105,15 @@ describe('custom conventional changelog', () => {
         }).catch(done.fail);
     });
 
+    it('shortens the commit hash', (done) => {
+      const someCommit = 'bar(*): lorem\n-hash-\nda4451bc8882f52c467068e414f9323ca34c6928';
+      transformCommitWithConfig(someCommit, { types: [{ key: 'bar' }] })
+        .then((transformedCommit) => {
+          expect(transformedCommit.hash).toBe('da4451b');
+          done();
+        }).catch(done.fail);
+    });
+
     describe('notes', () => {
       it('does not discard commits containing important notes', (done) => {
         const commit = 'foo(b): hello\nIMPORTANT: be cool!\nSome Note: foo';
