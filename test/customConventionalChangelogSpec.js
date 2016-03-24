@@ -67,6 +67,14 @@ describe('custom conventional changelog', () => {
         }).catch(done.fail);
     });
 
+    it('uses type key, if type config does not specify a name', (done) => {
+      transformCommitWithConfig('a(c): c', { types: [{ key: 'a' }] })
+        .then((transformedCommit) => {
+          expect(transformedCommit.type).toBe('a');
+          done();
+        }).catch(done.fail);
+    });
+
     it('discards commits that are not meant to be shown in changelog', (done) => {
       transformCommitWithConfig('bar(fgh): lorem', {
         types: [
