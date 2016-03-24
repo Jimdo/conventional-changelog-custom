@@ -22,123 +22,135 @@ describe('getTransformFn', () => {
   function transformCommitWithConfig(commit, config, parserConfig) {
     const parsedCommit = conventionalChangelogParser(commit, parserConfig || {});
 
-    return Promise.resolve(getTransformFn(config)(parsedCommit));
+    return getTransformFn(config)(parsedCommit);
   }
 
   describe('writerOptions', () => {
-    it('maps short notation of type to longer title', (done) => {
-      transformCommitWithConfig('foo(asd): hello', {
+    it('maps short notation of type to longer title', () => {
+      const transformedCommit = transformCommitWithConfig('foo(asd): hello', {
         types: [
           {
             key: 'foo',
             name: 'Foo Fuchs',
           },
         ],
-      }).then((transformedCommit) => {
-        expect(transformedCommit.type).toBe('Foo Fuchs');
-        done();
-      }).catch(done.fail);
+      });
+
+      expect(transformedCommit.type).toBe('Foo Fuchs');
     });
 
-    it('discards unknown commit types', (done) => {
-      transformCommitWithConfig('a(c): c', { types: [{ key: 'b' }] })
-        .then((transformedCommit) => {
-          expect(transformedCommit).toBeUndefined();
-          done();
-        }).catch(done.fail);
+    it('discards unknown commit types', () => {
+      const transformedCommit = transformCommitWithConfig(
+        'a(c): c',
+        { types: [{ key: 'b' }] }
+      );
+
+      expect(transformedCommit).toBeUndefined();
     });
 
-    it('uses type key, if type config does not specify a name', (done) => {
-      transformCommitWithConfig('a(c): c', { types: [{ key: 'a' }] })
-        .then((transformedCommit) => {
-          expect(transformedCommit.type).toBe('a');
-          done();
-        }).catch(done.fail);
+    it('uses type key, if type config does not specify a name', () => {
+      const transformedCommit = transformCommitWithConfig(
+        'a(c): c',
+        { types: [{ key: 'a' }] }
+      );
+
+      expect(transformedCommit.type).toBe('a');
     });
 
-    it('discards commits that are not meant to be shown in changelog', (done) => {
-      transformCommitWithConfig('bar(fgh): lorem', {
-        types: [
-          {
-            key: 'bar',
-            hide: true,
-          },
-        ],
-      }).then((transformedCommit) => {
-        expect(transformedCommit).toBeUndefined();
-        done();
-      }).catch(done.fail);
+    it('discards commits that are not meant to be shown in changelog', () => {
+      const transformedCommit = transformCommitWithConfig(
+        'bar(fgh): lorem',
+        {
+          types: [
+            {
+              key: 'bar',
+              hide: true,
+            },
+          ],
+        }
+      );
+
+      expect(transformedCommit).toBeUndefined();
     });
 
-    it('falls back to defaultConfig', (done) => {
+    it('falls back to defaultConfig', () => {
       defaultConfigFake.types.push({
         key: 'hase',
         name: 'Fuchs',
       });
-      transformCommitWithConfig('hase(igel): lorem', {})
-        .then((transformedCommit) => {
-          expect(transformedCommit.type).toBe('Fuchs');
-          done();
-        }).catch(done.fail);
+
+      const transformedCommit = transformCommitWithConfig(
+        'hase(igel): lorem',
+        {}
+      );
+
+      expect(transformedCommit.type).toBe('Fuchs');
     });
 
-    it('normalizes a wildcard scope', (done) => {
-      transformCommitWithConfig('bar(*): lorem', { types: [{ key: 'bar' }] })
-        .then((transformedCommit) => {
-          expect(transformedCommit.scope).toBe('');
-          done();
-        }).catch(done.fail);
+    it('normalizes a wildcard scope', () => {
+      const transformedCommit = transformCommitWithConfig(
+        'bar(*): lorem',
+        { types: [{ key: 'bar' }] }
+      );
+
+      expect(transformedCommit.scope).toBe('');
     });
 
-    it('shortens the commit hash', (done) => {
+    it('shortens the commit hash', () => {
       const someCommit = 'bar(*): lorem\n-hash-\nda4451bc8882f52c467068e414f9323ca34c6928';
-      transformCommitWithConfig(someCommit, { types: [{ key: 'bar' }] })
-        .then((transformedCommit) => {
-          expect(transformedCommit.hash).toBe('da4451b');
-          done();
-        }).catch(done.fail);
+      const transformedCommit = transformCommitWithConfig(
+        someCommit,
+        { types: [{ key: 'bar' }] }
+      );
+
+      expect(transformedCommit.hash).toBe('da4451b');
     });
 
-    it('shortens the subject', (done) => {
+    it('shortens the subject', () => {
       const longSubject = 'foofoofoofoofoofoofoofoofoofoofoofoofoo' +
         'foofoofoofoofoofoofoofoofoofoofoofoofoofoofoofoofoo';
       const someCommit = `bar(yep): ${longSubject}`;
 
-      transformCommitWithConfig(someCommit, { types: [{ key: 'bar' }] })
-        .then((transformedCommit) => {
-          expect(transformedCommit.subject.length).toBe(80);
-          done();
-        }).catch(done.fail);
+      const transformedCommit = transformCommitWithConfig(
+        someCommit,
+        { types: [{ key: 'bar' }] }
+      );
+
+      expect(transformedCommit.subject.length).toBe(80);
     });
 
-    it('shortens the subject according to config', (done) => {
+    it('shortens the subject according to config', () => {
       const longSubject = 'foofoofoofoofoofoofoofoofoofoofoofoofoo' +
         'foofoofoofoofoofoofoofoofoofoofoofoofoofoofoofoofoo';
       const someCommit = `bar(yep): ${longSubject}`;
 
-      transformCommitWithConfig(someCommit, {
+      const transformedCommit = transformCommitWithConfig(someCommit, {
         types: [{ key: 'bar' }],
         maxSubjectLength: 42,
-      }).then((transformedCommit) => {
-        expect(transformedCommit.subject.length).toBe(42);
-        done();
-      }).catch(done.fail);
+      });
+
+      expect(transformedCommit.subject.length).toBe(42);
     });
 
     describe('notes', () => {
-      it('does not discard commits containing important notes', (done) => {
+      it('does not discard commits containing important notes', () => {
         const commit = 'foo(b): hello\nIMPORTANT: be cool!\nSome Note: foo';
 
-        transformCommitWithConfig(commit, {
-          types: [{ key: 'a' }],
-          notes: [
-            { keyword: 'Some Note' },
-            { keyword: 'IMPORTANT', important: true },
-          ],
-        }, { noteKeywords: ['IMPORTANT', 'Some Note'] }).then((transformedCommit) => {
-          expect(transformedCommit).toBeDefined();
-          done();
-        }).catch(done.fail);
+        const transformedCommit = transformCommitWithConfig(
+          commit,
+          {
+            types: [{ key: 'a' }],
+            notes: [
+              { keyword: 'Some Note' },
+              { keyword: 'IMPORTANT', important: true },
+            ],
+          },
+          {
+            noteKeywords: ['IMPORTANT', 'Some Note'],
+          }
+        );
+
+        expect(transformedCommit).toBeDefined();
       });
     });
   });
