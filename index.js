@@ -1,14 +1,15 @@
 'use strict';
 
-const deepAssign = require('deep-assign');
+const extend = require('extend');
 const angularChangelogPromise = require('conventional-changelog-angular');
 const lib = require('./lib');
 
 module.exports = Promise.all([
   lib.getConfigFromRcFile(),
   angularChangelogPromise,
-]).then((config, conventionalChangelogAngular) => deepAssign(
+]).then((args) => extend(
+  true,
   {},
-  conventionalChangelogAngular,
-  { writerOpts: { transform: lib.getTransformFn(config) } }
+  args[1],
+  { writerOpts: { transform: lib.getTransformFn(args[0]) } }
 ));
