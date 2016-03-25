@@ -4,7 +4,7 @@
   "description": "customizable conventional changelog preset",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "gulp test"
   },
   "author": "Jimdo GmbH",
   "license": "MIT",
