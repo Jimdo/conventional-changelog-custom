@@ -36,7 +36,7 @@ Configuration
 this custom config will search for a `.changelogrc` file 
 in any of the parent directories and use it's.
 
-See the .changelogrc spec for details
+See the [.changelogrc-spec](https://github.com/Jimdo/changelogrc-spec) for details.
 
 
 License
