@@ -7,7 +7,7 @@ node_js:
   - '5'
 
 before_script:
-  - npm prune
+  - npm install gulp-cli
 
 after_success:
   - 'curl -Lo travis_after_all.py https://git.io/travis_after_all'
