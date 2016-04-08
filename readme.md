@@ -3,6 +3,8 @@ conventional-changelog-custom
 
 [![Build Status](https://travis-ci.org/Jimdo/conventional-changelog-custom.svg?branch=master)](https://travis-ci.org/Jimdo/conventional-changelog-custom)
 [![Coverage Status](https://coveralls.io/repos/github/Jimdo/conventional-changelog-custom/badge.svg?branch=master)](https://coveralls.io/github/Jimdo/conventional-changelog-custom?branch=master)
+[![bitHound Overall Score](https://www.bithound.io/github/Jimdo/conventional-changelog-custom/badges/score.svg)](https://www.bithound.io/github/Jimdo/conventional-changelog-custom)
+[![bitHound Dependencies](https://www.bithound.io/github/Jimdo/conventional-changelog-custom/badges/dependencies.svg)](https://www.bithound.io/github/Jimdo/conventional-changelog-custom/master/dependencies/npm)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
 
