@@ -1,10 +1,10 @@
 {
   "name": "conventional-changelog-custom",
-  "version": "0.0.1",
   "description": "customizable conventional changelog preset",
   "main": "index.js",
   "scripts": {
-    "test": "gulp test"
+    "test": "gulp test",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "author": "Jimdo GmbH",
   "license": "MIT",
@@ -19,11 +19,16 @@
     "proxyquire": "1.7.4",
     "through2": "2.0.1",
     "uberconfig": "0.1.0",
-    "undertaker-task-provider-registry": "1.2.1"
+    "undertaker-task-provider-registry": "1.2.1",
+    "semantic-release": "4.3.5"
   },
   "dependencies": {
     "conventional-changelog-angular": "1.0.0",
     "extend": "3.0.0",
     "findup": "0.1.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Jimdo/conventional-changelog-custom.git"
   }
 }
