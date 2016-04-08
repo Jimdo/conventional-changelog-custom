@@ -31,7 +31,7 @@
   "dependencies": {
     "conventional-changelog-angular": "1.0.0",
     "extend": "3.0.0",
-    "findup": "0.1.5"
+    "get-changelogrc-config": "0.0.0"
   },
   "repository": {
     "type": "git",
