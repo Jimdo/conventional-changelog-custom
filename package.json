@@ -17,6 +17,7 @@
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-toolbox-pipe-coverage-istanbul": "0.2.2",
     "gulp-toolbox-registry": "0.3.3",
+    "gulp-toolbox-reporter-coveralls": "0.1.1",
     "gulp-toolbox-test-node-jasmine": "0.2.1",
     "proxyquire": "1.7.4",
     "semantic-release": "4.3.5",
