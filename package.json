@@ -11,7 +11,7 @@
   "devDependencies": {
     "conventional-changelog": "1.1.0",
     "conventional-commits-parser": "1.1.0",
-    "eslint": "2.7.0",
+    "eslint": "2.8.0",
     "eslint-config-airbnb": "7.0.0",
     "eslint-plugin-react": "4.3.0",
     "gulp": "github:gulpjs/gulp#4.0",
