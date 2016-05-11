@@ -19,7 +19,7 @@
     "gulp-toolbox-registry": "0.3.3",
     "gulp-toolbox-reporter-coveralls": "0.1.1",
     "gulp-toolbox-test-node-jasmine": "0.2.1",
-    "proxyquire": "1.7.7",
+    "proxyquire": "1.7.9",
     "semantic-release": "4.3.5",
     "through2": "2.0.1",
     "uberconfig": "0.1.1",
