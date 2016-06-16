@@ -18,7 +18,7 @@
     "gulp-toolbox-pipe-coverage-istanbul": "0.2.2",
     "gulp-toolbox-registry": "0.3.6",
     "gulp-toolbox-reporter-coveralls": "0.1.1",
-    "gulp-toolbox-test-node-jasmine": "0.2.2",
+    "gulp-toolbox-test-node-jasmine": "0.2.3",
     "proxyquire": "1.7.9",
     "semantic-release": "4.3.5",
     "through2": "2.0.1",
