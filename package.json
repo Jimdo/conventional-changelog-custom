@@ -15,7 +15,7 @@
     "eslint-config-airbnb-base": "3.0.1",
     "eslint-plugin-import": "1.8.1",
     "gulp": "github:gulpjs/gulp#4.0",
-    "gulp-toolbox-pipe-coverage-istanbul": "0.2.2",
+    "gulp-toolbox-pipe-coverage-istanbul": "0.2.3",
     "gulp-toolbox-registry": "0.3.6",
     "gulp-toolbox-reporter-coveralls": "0.1.1",
     "gulp-toolbox-test-node-jasmine": "0.2.3",
