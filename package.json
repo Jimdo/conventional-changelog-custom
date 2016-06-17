@@ -22,7 +22,7 @@
     "proxyquire": "1.7.9",
     "semantic-release": "4.3.5",
     "through2": "2.0.1",
-    "uberconfig": "0.1.1",
+    "uberconfig": "0.2.0",
     "undertaker-task-provider-registry": "1.2.1"
   },
   "peerDependencies": {
