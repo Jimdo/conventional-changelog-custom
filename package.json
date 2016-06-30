@@ -16,7 +16,7 @@
     "eslint-plugin-import": "1.9.2",
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-toolbox-pipe-coverage-istanbul": "0.2.4",
-    "gulp-toolbox-registry": "0.4.0",
+    "gulp-toolbox-registry": "0.4.1",
     "gulp-toolbox-reporter-coveralls": "0.1.1",
     "gulp-toolbox-test-node-jasmine": "0.2.3",
     "proxyquire": "1.7.10",
