@@ -25,8 +25,8 @@ const conventionalChangelog = require('conventional-changelog');
 const config = require('conventional-changelog-custom');
 
 conventionalChangelog({
-  config,
-  /* ... */
+    config,
+    /* ... */
 }).pipe(process.stdout); // or any writable stream
 ```
 

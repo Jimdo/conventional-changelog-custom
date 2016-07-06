@@ -3,23 +3,23 @@ sudo: false
 language: node_js
 
 cache:
-  directories:
-    - node_modules
+    directories:
+        - node_modules
 
 node_js:
-  - '4'
-  - '5'
+    - '4'
+    - '5'
 
 before_script:
-  - npm prune
-  - npm install gulp-cli
+    - npm prune
+    - npm install gulp-cli
 
 after_success:
-  - 'curl -Lo travis_after_all.py https://git.io/travis_after_all'
-  - python travis_after_all.py
-  - 'export $(cat .to_export_back) &> /dev/null'
-  - npm run semantic-release
+    - 'curl -Lo travis_after_all.py https://git.io/travis_after_all'
+    - python travis_after_all.py
+    - 'export $(cat .to_export_back) &> /dev/null'
+    - npm run semantic-release
 
 branches:
-  except:
-    - "/^v\\d+\\.\\d+\\.\\d+$/"
+    except:
+        - "/^v\\d+\\.\\d+\\.\\d+$/"

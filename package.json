@@ -1,41 +1,41 @@
 {
-  "name": "conventional-changelog-custom",
-  "description": "customizable conventional changelog preset",
-  "main": "index.js",
-  "scripts": {
-    "test": "gulp test",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
-  },
-  "author": "Jimdo GmbH",
-  "license": "MIT",
-  "devDependencies": {
-    "conventional-changelog": "1.1.0",
-    "conventional-commits-parser": "1.2.2",
-    "eslint": "3.0.1",
-    "eslint-config-jimdo-base": "1.0.0",
-    "eslint-config-airbnb-base": "4.0.0",
-    "eslint-plugin-import": "1.10.2",
-    "gulp": "github:gulpjs/gulp#4.0",
-    "gulp-toolbox-pipe-coverage-istanbul": "0.2.4",
-    "gulp-toolbox-registry": "0.4.1",
-    "gulp-toolbox-reporter-coveralls": "0.1.1",
-    "gulp-toolbox-test-node-jasmine": "0.2.3",
-    "proxyquire": "1.7.10",
-    "semantic-release": "4.3.5",
-    "through2": "2.0.1",
-    "uberconfig": "0.2.1",
-    "undertaker-task-provider-registry": "1.2.1"
-  },
-  "peerDependencies": {
-    "conventional-changelog": "1.1.0"
-  },
-  "dependencies": {
-    "conventional-changelog-angular": "1.2.0",
-    "extend": "3.0.0",
-    "get-changelogrc-config": "0.0.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Jimdo/conventional-changelog-custom.git"
-  }
+    "name": "conventional-changelog-custom",
+    "description": "customizable conventional changelog preset",
+    "main": "index.js",
+    "scripts": {
+        "test": "gulp test",
+        "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    },
+    "author": "Jimdo GmbH",
+    "license": "MIT",
+    "devDependencies": {
+        "conventional-changelog": "1.1.0",
+        "conventional-commits-parser": "1.2.2",
+        "eslint": "3.0.1",
+        "eslint-config-jimdo-base": "1.0.0",
+        "eslint-config-airbnb-base": "4.0.0",
+        "eslint-plugin-import": "1.10.2",
+        "gulp": "github:gulpjs/gulp#4.0",
+        "gulp-toolbox-pipe-coverage-istanbul": "0.2.4",
+        "gulp-toolbox-registry": "0.4.1",
+        "gulp-toolbox-reporter-coveralls": "0.1.1",
+        "gulp-toolbox-test-node-jasmine": "0.2.3",
+        "proxyquire": "1.7.10",
+        "semantic-release": "4.3.5",
+        "through2": "2.0.1",
+        "uberconfig": "0.2.1",
+        "undertaker-task-provider-registry": "1.2.1"
+    },
+    "peerDependencies": {
+        "conventional-changelog": "1.1.0"
+    },
+    "dependencies": {
+        "conventional-changelog-angular": "1.2.0",
+        "extend": "3.0.0",
+        "get-changelogrc-config": "0.0.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Jimdo/conventional-changelog-custom.git"
+    }
 }

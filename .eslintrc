@@ -1,6 +1,6 @@
 {
-  "extends": "jimdo-base",
-  "parserOptions": {
-    "sourceType": "script"
-  }
+    "extends": "jimdo-base",
+    "parserOptions": {
+        "sourceType": "script"
+    }
 }
