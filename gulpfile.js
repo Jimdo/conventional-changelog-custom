@@ -1,3 +1,4 @@
+/* eslint import/no-extraneous-dependencies: 0 */
 'use strict';
 
 const gulp = require('gulp');

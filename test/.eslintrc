@@ -3,6 +3,7 @@
         "jasmine": true
     },
     "rules": {
+        "import/no-extraneous-dependencies": 0,
         "max-statements": 0,
         "max-nested-callbacks": 0
     }
