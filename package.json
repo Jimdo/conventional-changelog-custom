@@ -11,7 +11,7 @@
     "devDependencies": {
         "conventional-changelog": "1.1.0",
         "conventional-commits-parser": "1.2.3",
-        "eslint": "3.3.1",
+        "eslint": "3.4.0",
         "eslint-config-jimdo-base": "1.0.1",
         "eslint-config-airbnb-base": "5.0.2",
         "eslint-plugin-import": "1.13.0",
