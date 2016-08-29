@@ -13,7 +13,7 @@
         "conventional-commits-parser": "1.2.3",
         "eslint": "3.4.0",
         "eslint-config-jimdo-base": "1.0.1",
-        "eslint-config-airbnb-base": "5.0.2",
+        "eslint-config-airbnb-base": "5.0.3",
         "eslint-plugin-import": "1.14.0",
         "gulp": "github:gulpjs/gulp#4.0",
         "gulp-toolbox-pipe-coverage-istanbul": "0.2.4",
