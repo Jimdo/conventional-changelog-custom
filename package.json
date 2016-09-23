@@ -14,7 +14,7 @@
         "eslint": "3.6.1",
         "eslint-config-jimdo-base": "1.0.2",
         "eslint-config-airbnb-base": "7.0.0",
-        "eslint-plugin-import": "1.14.0",
+        "eslint-plugin-import": "1.16.0",
         "gulp": "github:gulpjs/gulp#4.0",
         "gulp-toolbox-pipe-coverage-istanbul": "0.2.4",
         "gulp-toolbox-registry": "0.4.1",
