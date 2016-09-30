@@ -7,7 +7,7 @@ const lib = require('./lib');
 module.exports = Promise.all([
     lib.getConfigFromRcFile(),
     angularChangelogPromise,
-]).then((args) => extend(
+]).then(args => extend(
     true,
     {},
     args[1],
